@@ -1,0 +1,48 @@
+
+Related articles
+
+https://docs.rackspace.com/docs/getting-started-with-the-openstack-flex-cli
+https://pypi.org/project/python-openstackclient/
+https://docs.openstack.org/python-openstackclient/zed/
+https://docs.openstack.org/python-openstackclient/zed/cli/authentication.html
+https://docs.openstack.org/python-openstackclient/zed/cli/command-list.html
+
+
+Download python virtual environment manager installer
+
+https://www.anaconda.com/docs/getting-started/miniconda/main
+https://repo.anaconda.com/miniconda/
+https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+https://www.anaconda.com/docs/getting-started/miniconda/install/windows-gui-install
+
+conda create -n openstack-venv python=3.11 -y
+
+conda activate openstack-venv
+
+conda install -c conda-forge psutil -y
+
+pip install python-openstackclient
+
+Create configuration file
+
+C:\Users\user\.config\openstack\clouds.yaml
+
+
+clouds:
+  <cloud_name>:
+    auth_type: password
+    auth:
+      auth_url: "https://keystone.api.<region>.rackspacecloud.com/v3/"
+      username:
+      password:
+      project_domain_name: rackspace_cloud_domain
+      user_domain_name: rackspace_cloud_domain
+
+
+
+Test it
+
+
+openstack --os-cloud <cloud_name> --os-username <username> --os-password <legacy_cloud_api_key> --os-project-name <project_name> server list
+
+
